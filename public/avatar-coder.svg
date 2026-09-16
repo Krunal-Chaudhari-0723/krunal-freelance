@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Illustrated developer avatar">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.25" r="0.85">
+      <stop offset="0%" stop-color="#1b2030"/>
+      <stop offset="100%" stop-color="#0c0e13"/>
+    </radialGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#252a38"/>
+      <stop offset="100%" stop-color="#14171f"/>
+    </linearGradient>
+    <linearGradient id="hoodie" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#333a4b"/>
+      <stop offset="100%" stop-color="#232935"/>
+    </linearGradient>
+    <clipPath id="round">
+      <circle cx="60" cy="60" r="60"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#round)">
+    <circle cx="60" cy="60" r="60" fill="url(#bg)"/>
+
+    <!-- Faint code glyphs in the background, nodding to the craft -->
+    <g fill="#f0b429" opacity="0.16" font-family="monospace" font-size="13" font-weight="700">
+      <text x="12" y="30">&lt;/&gt;</text>
+      <text x="88" y="104">{ }</text>
+    </g>
+
+    <!-- Shoulders -->
+    <path d="M22 120c1-16 9-25 24-28h28c15 3 23 12 24 28z" fill="url(#hoodie)"/>
+    <path d="M60 92v28" stroke="#1b202b" stroke-width="2.5" opacity="0.7"/>
+
+    <!-- Neck -->
+    <path d="M53 78h14v14a7 7 0 0 1-14 0z" fill="#d9a377"/>
+
+    <!-- Head -->
+    <ellipse cx="60" cy="56" rx="25" ry="25" fill="url(#hair)"/>
+    <ellipse cx="60" cy="60" rx="21.5" ry="24" fill="#f0c49c"/>
+
+    <!-- Fringe, kept angular for an illustrated look -->
+    <path d="M38 58c-1-16 8-26 22-26s23 10 22 26l-7-3-4-7-7 8-6-8-5 7-6-2z" fill="url(#hair)"/>
+    <path d="M38 58c-1-16 8-26 22-26 4 0 8 1 11 3-12 1-20 9-22 21z" fill="#2d3344" opacity="0.6"/>
+
+    <!-- Eyes and brows -->
+    <g fill="#191d27">
+      <ellipse cx="51" cy="62" rx="2.7" ry="3.6"/>
+      <ellipse cx="69" cy="62" rx="2.7" ry="3.6"/>
+    </g>
+    <g fill="#ffffff" opacity="0.85">
+      <circle cx="52" cy="61" r="0.9"/>
+      <circle cx="70" cy="61" r="0.9"/>
+    </g>
+    <g stroke="#242a38" stroke-width="2" stroke-linecap="round">
+      <path d="M47 55.5c2-1.4 5-1.4 7 0"/>
+      <path d="M66 55.5c2-1.4 5-1.4 7 0"/>
+    </g>
+
+    <!-- Smile -->
+    <path d="M55 70.5c3 2.6 7 2.6 10 0" stroke="#b97f57" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Headphones: the clearest "developer" cue at small sizes -->
+    <path d="M33 60V54a27 27 0 0 1 54 0v6" stroke="#f0b429" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <rect x="26" y="56" width="13" height="19" rx="6.5" fill="#f0b429"/>
+    <rect x="81" y="56" width="13" height="19" rx="6.5" fill="#f0b429"/>
+    <rect x="29.5" y="60" width="6" height="11" rx="3" fill="#a8761a" opacity="0.55"/>
+    <rect x="84.5" y="60" width="6" height="11" rx="3" fill="#a8761a" opacity="0.55"/>
+  </g>
+</svg>

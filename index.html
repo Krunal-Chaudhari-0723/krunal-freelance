@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07080b" />
+
+    <!-- Primary meta -->
+    <title>Krunal Chaudhari | Freelance Web Developer</title>
+    <meta
+      name="description"
+      content="I build modern, fast and responsive websites and web applications for businesses, startups and personal brands. Freelance full stack web developer available for projects worldwide."
+    />
+    <meta name="author" content="Krunal Chaudhari" />
+    <link rel="canonical" href="https://chaudharikrunal.me/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Icons. Modern browsers take the SVG and render it crisp at any size;
+         the .ico (16/32/48) covers everything older. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-avatar.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Krunal Chaudhari" />
+    <meta property="og:url" content="https://chaudharikrunal.me/" />
+    <meta
+      property="og:title"
+      content="Krunal Chaudhari | Freelance Web Developer"
+    />
+    <meta
+      property="og:description"
+      content="I build modern, fast and responsive websites and web applications for businesses, startups and personal brands."
+    />
+    <meta property="og:image" content="https://chaudharikrunal.me/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Krunal Chaudhari, freelance full stack web developer - websites that help businesses grow."
+    />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Krunal Chaudhari | Freelance Web Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="I build modern, fast and responsive websites and web applications for businesses, startups and personal brands."
+    />
+    <meta
+      name="twitter:image"
+      content="https://chaudharikrunal.me/og-image.svg"
+    />
+
+    <!-- The hero screenshot is the largest element above the fold: fetch it
+         alongside the HTML rather than waiting for React to mount. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/hero/showcase-desktop.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+
+    <!-- Fonts: preconnect early, swap so text paints immediately -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+
+    <!--
+      Structured data. Contains only verifiable facts - no invented ratings,
+      review counts or client numbers. Add "sameAs" URLs and "telephone" once
+      those are configured in src/config/siteConfig.js.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Krunal Chaudhari",
+        "alternateName": "Krunal Chaudhari - Freelance Web Developer",
+        "url": "https://chaudharikrunal.me/",
+        "image": "https://chaudharikrunal.me/og-image.svg",
+        "description": "Freelance full stack web developer building modern, fast and responsive websites and web applications for businesses, startups and personal brands.",
+        "areaServed": "Worldwide",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Krunal Chaudhari",
+          "jobTitle": "Freelance Full Stack Web Developer"
+        },
+        "knowsAbout": [
+          "Web development",
+          "React",
+          "Node.js",
+          "Business websites",
+          "Landing pages",
+          "E-commerce websites",
+          "Web applications"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Web development services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Business Websites"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Landing Pages" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "E-commerce Websites"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom Web Applications"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Website Redesign" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Website Maintenance and Optimization"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

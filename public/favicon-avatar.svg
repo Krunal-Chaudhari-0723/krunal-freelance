@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Krunal Chaudhari">
+  <!--
+    Favicon variant of /avatar-coder.svg: same character, tuned for small sizes.
+    Differences from the nav version: no background code glyphs, a thicker
+    headphone band, and the head scaled up to fill the circle with the
+    shoulders kept inside it. At 16px only the silhouette survives, so the
+    amber band has to carry the mark.
+  -->
+  <defs>
+    <radialGradient id="fbg" cx="0.5" cy="0.28" r="0.85">
+      <stop offset="0%" stop-color="#1d2231"/>
+      <stop offset="100%" stop-color="#0b0d12"/>
+    </radialGradient>
+    <linearGradient id="fhair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a3040"/>
+      <stop offset="100%" stop-color="#15181f"/>
+    </linearGradient>
+    <clipPath id="fround">
+      <circle cx="60" cy="60" r="60"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#fround)">
+    <circle cx="60" cy="60" r="60" fill="url(#fbg)"/>
+
+    <!-- Shoulders, drawn unscaled so they stay anchored inside the circle -->
+    <path d="M10 120c4-19 22-28 50-28s46 9 50 28z" fill="#2b3242"/>
+
+    <!-- Head assembly, scaled up about its own centre to fill the frame -->
+    <g transform="translate(60 54) scale(1.28) translate(-60 -53)">
+      <!-- Head -->
+      <ellipse cx="60" cy="56" rx="25" ry="25" fill="url(#fhair)"/>
+      <ellipse cx="60" cy="60" rx="21.5" ry="24" fill="#f2c79e"/>
+
+      <!-- Angular fringe -->
+      <path d="M38 58c-1-16 8-26 22-26s23 10 22 26l-7-3-4-7-7 8-6-8-5 7-6-2z" fill="url(#fhair)"/>
+
+      <!-- Eyes, slightly oversized so they survive downscaling -->
+      <g fill="#171b24">
+        <ellipse cx="51" cy="62" rx="3.1" ry="4"/>
+        <ellipse cx="69" cy="62" rx="3.1" ry="4"/>
+      </g>
+
+      <!-- Headphones: the load-bearing part of the mark -->
+      <path d="M32 61V54a28 28 0 0 1 56 0v7" stroke="#f0b429" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <rect x="24" y="55" width="15" height="21" rx="7.5" fill="#f0b429"/>
+      <rect x="81" y="55" width="15" height="21" rx="7.5" fill="#f0b429"/>
+    </g>
+  </g>
+</svg>

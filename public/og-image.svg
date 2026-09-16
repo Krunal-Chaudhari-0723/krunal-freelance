@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Krunal Chaudhari, freelance full stack web developer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0e13"/>
+      <stop offset="100%" stop-color="#07080b"/>
+    </linearGradient>
+    <radialGradient id="bloom" cx="0.78" cy="0.18" r="0.6">
+      <stop offset="0%" stop-color="#f0b429" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0b429" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#bloom)"/>
+
+  <!-- Monogram -->
+  <g transform="translate(80 74)">
+    <rect width="58" height="58" rx="14" fill="#0c0e13" stroke="#2b3140" stroke-width="1.5"/>
+    <g transform="translate(29 29) scale(0.72) translate(-32 -32)">
+      <path d="M17 15h7.5v34H17z" fill="#f0b429"/>
+      <path d="M26 31.5 41.5 15H51L35 32.2 51.5 49H42L26 33.8z" fill="#f0b429"/>
+    </g>
+  </g>
+  <text x="156" y="112" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#f4f6f9">Krunal Chaudhari</text>
+  <text x="156" y="139" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="600" letter-spacing="2.4" fill="#f0b429">FREELANCE WEB DEVELOPER</text>
+
+  <!-- Headline -->
+  <text x="80" y="310" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="76" font-weight="800" letter-spacing="-2" fill="#f4f6f9">Websites That Help</text>
+  <text x="80" y="396" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="76" font-weight="800" letter-spacing="-2" fill="#f0b429">Businesses Grow.</text>
+
+  <text x="80" y="456" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#9aa3b4">Modern, fast and responsive websites for businesses,</text>
+  <text x="80" y="492" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="400" fill="#9aa3b4">startups and personal brands.</text>
+
+  <!-- Footer bar -->
+  <rect x="80" y="540" width="1040" height="1" fill="#1d212b"/>
+  <text x="80" y="582" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#6c7486">chaudharikrunal.me</text>
+
+  <g font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="19" fill="#6c7486">
+    <text x="700" y="582">Business Websites</text>
+    <circle cx="880" cy="575" r="3" fill="#2b3140"/>
+    <text x="900" y="582">Web Apps</text>
+    <circle cx="1010" cy="575" r="3" fill="#2b3140"/>
+    <text x="1030" y="582">E-commerce</text>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+# https://chaudharikrunal.me/
+User-agent: *
+Allow: /
+
+Sitemap: https://chaudharikrunal.me/sitemap.xml

@@ -1,0 +1,198 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   THEME TOKENS
+   ---------------------------------------------------------------------------
+   Every colour, font and shadow used across the site is defined here once.
+   Changing the accent below re-themes the entire website.
+   --------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  /* Surfaces - very dark neutral base, progressively lighter layers */
+  --color-canvas: #07080b;
+  --color-surface: #0c0e13;
+  --color-surface-2: #11141b;
+  --color-elevated: #171b24;
+
+  /* Borders */
+  --color-line: #1d212b;
+  --color-line-strong: #2b3140;
+
+  /* Text */
+  --color-fg: #f4f6f9;
+  --color-muted: #9aa3b4;
+  --color-faint: #7e8798;
+
+  /* Single accent - used for buttons, links, highlights and active states */
+  --color-accent: #f0b429;
+  --color-accent-hover: #ffc752;
+  --color-accent-dim: #c9941f;
+  --color-accent-ink: #14100a;
+
+  /* Status */
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 1px 2px rgb(0 0 0 / 0.4), 0 24px 56px -20px rgb(0 0 0 / 0.75);
+  --shadow-accent: 0 18px 40px -18px rgb(240 180 41 / 0.45);
+}
+
+/* ---------------------------------------------------------------------------
+   BASE
+   --------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the sticky navbar */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Guards against any single element causing sideways scroll on mobile */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One consistent, clearly visible focus ring across the whole site */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  /* Native form controls need explicit dark styling in some browsers */
+  select option {
+    background-color: var(--color-surface-2);
+    color: var(--color-fg);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-color: var(--color-line-strong) var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 9999px;
+    border: 2px solid var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a4152;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   REUSABLE UTILITIES
+   --------------------------------------------------------------------------- */
+
+/* Page gutter - one source of truth for horizontal rhythm */
+@utility container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Accent-tinted text for a single highlighted phrase */
+@utility text-accent-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-accent-hover),
+    var(--color-accent) 55%,
+    var(--color-accent-dim)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* Faint dot grid used behind the hero */
+@utility grid-backdrop {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(255 255 255 / 0.05) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+/* Hairline top border that fades out at both ends */
+@utility divider-fade {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-line-strong) 20%,
+    var(--color-line-strong) 80%,
+    transparent
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   MOTION PREFERENCES
+   ---------------------------------------------------------------------------
+   Framer Motion is handled by <MotionConfig reducedMotion="user">; this covers
+   CSS transitions, animations and smooth scrolling.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
