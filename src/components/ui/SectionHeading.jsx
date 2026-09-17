@@ -23,8 +23,7 @@ export default function SectionHeading({
       className={`flex max-w-3xl flex-col gap-4 ${alignment} ${className}`}
     >
       {eyebrow && (
-        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-          <span className="h-px w-6 bg-accent/50" aria-hidden="true" />
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
           {eyebrow}
         </span>
       )}

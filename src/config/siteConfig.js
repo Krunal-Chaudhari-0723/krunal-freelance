@@ -19,8 +19,15 @@ const siteConfig = {
   shortTitle: 'Freelance Developer',
   positioning:
     'I build modern websites and web applications for businesses, startups and personal brands.',
-  domain: 'https://chaudharikrunal.me/',
-  location: 'India',
+  // With `www`: the non-www host 301s here, so this is the canonical origin.
+  domain: 'https://www.chaudharikrunal.me/',
+  /**
+   * Shown in About, Contact and the footer, and mirrored by
+   * `addressLocality` / `addressRegion` in the JSON-LD in index.html.
+   * A specific city is what makes local search work — "web developer in Surat"
+   * is winnable in a way that "web developer in India" is not.
+   */
+  location: 'Surat, Gujarat',
 
   // Shown as the status pill in the hero. Keep it honest and keep it current.
   availability: 'Available for new projects',
@@ -44,22 +51,30 @@ const siteConfig = {
 
   /**
    * WhatsApp number in full international format, digits only.
-   * Example for India: '919876543210' (91 = country code, no +, spaces or dashes).
-   * TODO: add your WhatsApp number. Until then, WhatsApp CTAs fall back to the
-   * contact form and the floating WhatsApp button stays hidden.
+   * '91' is the India country code, then the 10-digit number — no +, spaces
+   * or dashes. Setting this switches on the floating chat button and every
+   * WhatsApp CTA across the site.
    */
-  whatsappNumber: '',
+  whatsappNumber: '916351924667',
 
   // Prefilled first message for WhatsApp chats.
   whatsappDefaultMessage:
     "Hi Krunal, I found your website and I'd like to discuss a project.",
 
-  // --- Social links ---------------------------------------------------------
-  // TODO: add your real profile URLs. Empty links are not rendered.
+  /**
+   * --- Social links ---------------------------------------------------------
+   * Rendered in the contact card and the footer. An empty string is simply not
+   * rendered, so there is never a dead icon.
+   *
+   * `github` is left empty on purpose: this site sells to business owners, who
+   * do not read repositories. Paste the URL below to switch it on —
+   * https://github.com/Krunal-Chaudhari-0723
+   */
   social: {
+    linkedin: 'https://www.linkedin.com/in/krunal-chaudhari-2b9ab5354/',
+    instagram: 'https://www.instagram.com/krunalchaudhari.dev',
+    facebook: 'https://www.facebook.com/krunalchaudhari.dev',
     github: '',
-    linkedin: '',
-    instagram: '',
   },
 
   // --- SEO ------------------------------------------------------------------
@@ -88,8 +103,17 @@ const siteConfig = {
    * instead. It never pretends a message was delivered.
    */
   contactForm: {
-    provider: 'none',
-    web3formsAccessKey: '', // TODO: e.g. 'a1b2c3d4-0000-0000-0000-abcdefabcdef'
+    provider: 'web3forms',
+    /**
+     * Web3Forms access keys are tied to your email address, not to a site, so
+     * this is the same key the portfolio uses — no second key needed. Both
+     * forms share one 250-submission/month quota on the free tier, and each
+     * arrives under its own `subject` below so you can tell them apart.
+     *
+     * The key is public by design: Web3Forms works without a backend, so it
+     * ships in the page source. That is expected, not a leak.
+     */
+    web3formsAccessKey: 'f259c3b2-790e-481a-a6a6-79af0fa56b73',
     formspreeEndpoint: '', // TODO: e.g. 'https://formspree.io/f/xxxxxxxx'
     customEndpoint: '', // TODO: e.g. '/api/contact'
     subject: 'New project enquiry from chaudharikrunal.me',

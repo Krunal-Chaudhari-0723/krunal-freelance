@@ -24,10 +24,10 @@ Everything personal lives in **`src/config/siteConfig.js`**. Search it for
 | Field                           | What it does                                                 |
 | ------------------------------- | ------------------------------------------------------------ |
 | `email`                         | Powers the email link and the "send by email" fallback        |
-| `whatsappNumber`                | Powers every WhatsApp CTA and the floating chat button        |
-| `social.github` / `.linkedin` / `.instagram` | Footer and contact social icons              |
+| ~~`whatsappNumber`~~            | Done — +91 63519 24667                                        |
+| `social.github`                 | Optional — LinkedIn, Instagram and Facebook are set           |
 | ~~`photo`~~                     | Done — About-section portrait is set                          |
-| `contactForm.*`                 | Where enquiries get delivered (see section 3)                 |
+| ~~`contactForm.*`~~             | Done — Web3Forms; enquiries go to your key's inbox            |
 
 **Nothing is faked when a value is missing.** Unset social links are not
 rendered, the floating WhatsApp button stays hidden until a number exists, and
@@ -43,7 +43,7 @@ for India: `919876543210` (country code `91`, no `+`, spaces or dashes).
 
 | What              | Where                          | Notes                                                        |
 | ----------------- | ------------------------------ | ------------------------------------------------------------ |
-| Projects          | `src/data/projects.js`         | Three real projects, imported from krunalchaudhari.dev         |
+| Projects          | `src/data/projects.js`         | Four real projects, including his own developer portfolio      |
 | Testimonials      | `src/data/testimonials.js`     | Empty on purpose; the section shows an honest "coming soon"   |
 | Services          | `src/data/services.js`         |                                                               |
 | Pricing           | `src/data/pricing.js`          |                                                               |
@@ -54,14 +54,15 @@ for India: `919876543210` (country code `91`, no `+`, spaces or dashes).
 
 ### The projects
 
-Three real projects are live in `src/data/projects.js`, carried over from
-krunalchaudhari.dev with descriptions rewritten for a business audience:
+Four real projects are live in `src/data/projects.js`, with descriptions
+rewritten for a business audience:
 
 | Project              | Category         | Live                  |
 | -------------------- | ---------------- | --------------------- |
 | Seloria              | E-commerce       | getseloria.com        |
 | Food Delivery App    | Web Application  | Netlify               |
 | Jadoo — Travels      | Business Website | Netlify               |
+| Developer Portfolio  | Portfolio        | krunalchaudhari.dev   |
 
 Screenshots were pulled from the old site and converted to WebP
 (3.0 MB → 189 KB total).
@@ -145,16 +146,95 @@ publish directory and long-lived caching for hashed assets.
 
 Then point `chaudharikrunal.me` at the deployment and enable HTTPS.
 
-### After deploying
+### Canonical host
 
-- `public/sitemap.xml` has a hardcoded `lastmod` date — update it when you make
-  significant content changes.
-- Submit the site to [Google Search Console](https://search.google.com/search-console).
-- **Replace the social share image.** `public/og-image.svg` is a real, branded
-  1200×630 card, but X/Twitter and several other platforms don't render SVG
-  previews. Export it to `public/og-image.png` (any design tool, or open the SVG
-  in a browser and screenshot at 1200×630), then change the three `og-image.svg`
-  references in `index.html` to `og-image.png`.
+`chaudharikrunal.me` 301-redirects to `www.chaudharikrunal.me`, so **`www` is
+the canonical origin** and every absolute URL uses it — canonical, Open Graph,
+sitemap, robots and the JSON-LD `@id`s.
+
+`assertCanonicalPlugin` in `vite.config.js` **fails the build** if any absolute
+URL in `index.html` drifts off that origin. Verified: changing canonical to
+non-www aborts the build with a named error.
+
+If you ever flip the Vercel domain to non-www, change `SITE_ORIGIN` in
+`vite.config.js` and the URLs in `index.html` together.
+
+### robots.txt and sitemap.xml
+
+Both live in `public/` as normal committed files — so they are visible in git
+and greppable — but `seoFilesPlugin` in `vite.config.js` **rewrites them at the
+start of every build**. Vite's usual public-dir copy then puts them in `dist/`.
+
+That means you get both properties at once:
+
+- `lastmod` is always the build date, so the sitemap can never go stale
+- **Preview deployments are automatically `Disallow: /`** — when `VERCEL_ENV`
+  is not `production`, robots.txt blocks everything so `*.vercel.app` preview
+  URLs never compete with the live domain. Verified with
+  `VERCEL_ENV=preview npm run build`.
+- The dev server serves the same content (`text/plain` / `application/xml`)
+  instead of letting the SPA fallback answer `/robots.txt` with index.html and
+  a misleading `200`.
+
+Because the build rewrites them, do not hand-edit these two files — change
+`SITE_ORIGIN` or the template in `vite.config.js` instead. Expect a one-line
+`lastmod` diff the first time you build on a new day.
+
+### Google Search Console setup
+
+1. Add the property as a **Domain property** (`chaudharikrunal.me`) so www,
+   non-www and https are all covered by one property. Verify with the DNS TXT
+   record Vercel lets you add — easier than the HTML-file method here, because
+   the build output is regenerated on every deploy.
+2. Under **Sitemaps**, submit `sitemap.xml`.
+3. Use **URL Inspection** on `https://www.chaudharikrunal.me/` and click
+   *Request indexing* to skip the initial crawl wait.
+4. Check **Page indexing** after a week: the non-www URL should report
+   "Alternate page with proper canonical tag", not an error.
+- Check the share preview once live with the
+  [Facebook debugger](https://developers.facebook.com/tools/debug/) and
+  [X card validator](https://cards-dev.twitter.com/validator).
+- Validate structured data with the
+  [Rich Results Test](https://search.google.com/test/rich-results) — the FAQ
+  should be eligible for FAQ rich results.
+
+## 4b. What SEO is already handled
+
+| Area | State |
+| ---- | ----- |
+| Title / description | 42 and 147 chars, target term leads the description |
+| Canonical + robots | Set; `max-image-preview:large` for bigger thumbnails |
+| Structured data | `ProfessionalService` + `Person` + `WebSite` in one `@graph`, plus `FAQPage` — all in static HTML, no JS needed |
+| Social preview | `og-image.png` (1200×630) — PNG because X skips SVG |
+| Sitemap | Rewritten on every `npm run build` with that day's `lastmod` |
+| Headings | One `h1`, no skipped levels |
+| Images | Every image has `alt` plus `width`/`height` (no layout shift) |
+| Language | `lang="en-IN"`, `og:locale=en_IN` |
+| Performance | Hero image preloaded, vendor chunks split, WebP everywhere |
+
+**No invented trust signals.** There is no `aggregateRating`, review count,
+client count or founding date in the structured data — fake review markup is a
+manual-action risk with Google, and none of it is verifiable yet. Add
+`aggregateRating` only once you have real reviews.
+
+Two optional wins left:
+
+- **Add `sameAs` for GitHub** if you switch that social link on.
+- **Link krunalchaudhari.dev → chaudharikrunal.me.** The portfolio currently has
+  no link here. A "Hire me for freelance work" link from it is the single best
+  way to connect the two sites as one person and pass authority across.
+- **Create a Google Business Profile for Surat.** For a local freelancer this
+  outranks every on-page tweak in this file.
+
+### Why the two sites target different queries
+
+`krunalchaudhari.dev` already ranks for "Krunal Chaudhari" and
+"Krunal Chaudhari React developer" — recruiter-intent queries. This site
+deliberately does **not** compete for those: two of your own domains chasing one
+query means Google picks one, and the older portfolio wins. Instead this site
+targets buyer-intent queries — "freelance web developer in Surat", "website
+developer for small business" — which is why the title carries the city and the
+schema carries `addressLocality`.
 
 ---
 

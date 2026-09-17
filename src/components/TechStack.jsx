@@ -18,7 +18,7 @@ export default function TechStack() {
         id="tech-heading"
         eyebrow="Technology"
         title="Built With Modern Technology"
-        subtitle="Reliable, widely-supported tools — so your website is maintainable by any competent developer, not just by me."
+        subtitle="React and Next.js on the front end, the MERN stack or Laravel on the back — all widely-supported tools, so your website stays maintainable by any competent developer, not just by me."
       />
 
       <RevealGroup

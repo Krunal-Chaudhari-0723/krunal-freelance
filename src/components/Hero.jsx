@@ -66,8 +66,9 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
             >
-              I build fast, modern and conversion-focused websites for
-              businesses, startups and personal brands.
+              I&apos;m a freelance web developer building fast, modern and
+              conversion-focused websites for businesses, startups and personal
+              brands.
             </m.p>
 
             <m.div

@@ -41,7 +41,8 @@ export const projects = [
     description:
       'A complete online store built end to end — product pages, image handling and online payments through Razorpay, all managed from one system.',
     image: '/projects/seloria.webp',
-    imageAlt: 'Screenshot of the Seloria online store',
+    imageAlt:
+      'Seloria online store homepage, an e-commerce site built with Next.js, MongoDB and Razorpay payments',
     technologies: ['Next.js', 'MongoDB', 'Tailwind CSS', 'Razorpay', 'Cloudinary'],
     liveUrl: 'https://www.getseloria.com/',
     githubUrl: 'https://github.com/Krunal-Chaudhari-0723/getseloria',
@@ -54,7 +55,8 @@ export const projects = [
     description:
       'A food ordering platform where customers browse restaurants, build a cart and place orders, with user accounts and an admin panel for managing the business side.',
     image: '/projects/food-delivery.webp',
-    imageAlt: 'Screenshot of the food delivery web application',
+    imageAlt:
+      'Food delivery web application built on the MERN stack, showing the restaurant browsing screen',
     technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
     liveUrl: 'https://krunalchaudhari-fooddel-frontend.netlify.app/',
     githubUrl: 'https://github.com/Krunal-Chaudhari-0723/FoodDelivery',
@@ -67,10 +69,25 @@ export const projects = [
     description:
       'A responsive tours and travel website for browsing destinations, packages and deals, with a modern interface that works from desktop down to mobile.',
     image: '/projects/jadoo-travels.webp',
-    imageAlt: 'Screenshot of the Jadoo tours and travels website',
+    imageAlt:
+      'Jadoo tours and travels website built with React and Tailwind CSS, showing destinations and services',
     technologies: ['React', 'Node.js', 'Tailwind CSS'],
     liveUrl: 'https://lovely-stardust-c4a5fb.netlify.app/',
     githubUrl: 'https://github.com/Krunal-Chaudhari-0723/Technical-Task',
+    featured: false,
+  },
+  {
+    id: 'developer-portfolio',
+    title: 'Developer Portfolio',
+    category: 'Portfolio',
+    description:
+      'My own portfolio site: an animated introduction, a project showcase and a skills breakdown, with one clear path to getting in touch. The same approach suits any personal brand.',
+    image: '/projects/developer-portfolio.webp',
+    imageAlt:
+      'krunalchaudhari.dev developer portfolio homepage, built with React, Vite and Framer Motion',
+    technologies: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    liveUrl: 'https://www.krunalchaudhari.dev/',
+    githubUrl: 'https://github.com/Krunal-Chaudhari-0723/krunalchaudhari.dev',
     featured: false,
   },
 ]

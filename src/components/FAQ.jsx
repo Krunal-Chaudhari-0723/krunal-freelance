@@ -10,16 +10,12 @@ import Section from './ui/Section'
 import SectionHeading from './ui/SectionHeading'
 import Reveal, { RevealGroup, RevealItem } from './ui/Reveal'
 
-/** FAQ structured data, generated from the same source as the visible list. */
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  })),
-}
+/*
+ * The FAQPage structured data for this section is injected into index.html at
+ * build time by `faqSchemaPlugin` in vite.config.js, generated from this same
+ * src/data/faq.js. That way crawlers see it without running JavaScript, and
+ * there is still only one copy of the answers.
+ */
 
 export default function FAQ() {
   // Only one answer open at a time keeps the section short and scannable.
@@ -28,13 +24,6 @@ export default function FAQ() {
 
   return (
     <Section id="faq" labelledBy="faq-heading">
-      <script
-        type="application/ld+json"
-        // Generated from src/data/faq.js, so the markup can never drift from
-        // what visitors actually read.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
       <SectionHeading
         id="faq-heading"
         eyebrow="FAQ"
@@ -103,7 +92,7 @@ export default function FAQ() {
       <Reveal className="mt-10">
         <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-line bg-surface-2/60 px-6 py-6 text-center sm:flex-row sm:text-left">
           <p className="text-sm text-muted">
-            Still have a question? Ask me directly — no obligation.
+            Still have a question? Ask me directly no obligation.
           </p>
           <Button
             href={getWhatsAppUrl(

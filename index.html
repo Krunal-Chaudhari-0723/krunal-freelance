@@ -1,18 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07080b" />
 
-    <!-- Primary meta -->
-    <title>Krunal Chaudhari | Freelance Web Developer</title>
+    <!--
+      Primary meta.
+
+      The page title leads with the service + city because that is the query
+      that brings buyers, and krunalchaudhari.dev already owns the "Krunal
+      Chaudhari" name query — two of our own domains should not compete for it.
+
+      og:title below deliberately keeps the name first and drops the city:
+      social titles are not indexed, so they are written for humans sharing a
+      link, not for search queries.
+
+      All absolute URLs here must use https://www.chaudharikrunal.me — the
+      non-www host 301s to it. `assertCanonicalPlugin` in vite.config.js fails
+      the build if they ever drift apart.
+    -->
+    <title>Freelance Web Developer in Surat | Krunal Chaudhari</title>
+    <!-- 150 chars: Google truncates around 160, and the geo term leads. -->
     <meta
       name="description"
-      content="I build modern, fast and responsive websites and web applications for businesses, startups and personal brands. Freelance full stack web developer available for projects worldwide."
+      content="Freelance web developer in Surat, Gujarat. I build fast, responsive websites and web apps with React, Next.js and Node.js for businesses and startups."
     />
     <meta name="author" content="Krunal Chaudhari" />
-    <link rel="canonical" href="https://chaudharikrunal.me/" />
+    <link rel="canonical" href="https://www.chaudharikrunal.me/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Icons. Modern browsers take the SVG and render it crisp at any size;
@@ -26,7 +41,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Krunal Chaudhari" />
-    <meta property="og:url" content="https://chaudharikrunal.me/" />
+    <meta property="og:url" content="https://www.chaudharikrunal.me/" />
     <meta
       property="og:title"
       content="Krunal Chaudhari | Freelance Web Developer"
@@ -35,7 +50,9 @@
       property="og:description"
       content="I build modern, fast and responsive websites and web applications for businesses, startups and personal brands."
     />
-    <meta property="og:image" content="https://chaudharikrunal.me/og-image.svg" />
+    <!-- PNG, not SVG: X and several other platforms silently skip SVG previews. -->
+    <meta property="og:image" content="https://www.chaudharikrunal.me/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -56,7 +73,11 @@
     />
     <meta
       name="twitter:image"
-      content="https://chaudharikrunal.me/og-image.svg"
+      content="https://www.chaudharikrunal.me/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Krunal Chaudhari, freelance full stack web developer - websites that help businesses grow."
     />
 
     <!-- The hero screenshot is the largest element above the fold: fetch it
@@ -79,79 +100,163 @@
 
     <!--
       Structured data. Contains only verifiable facts - no invented ratings,
-      review counts or client numbers. Add "sameAs" URLs and "telephone" once
-      those are configured in src/config/siteConfig.js.
+      review counts, client numbers or founding dates.
+
+      Kept static (rather than generated in React) so crawlers see it without
+      running JavaScript. If you change name, phone, price or social links in
+      src/config/siteConfig.js, update them here too.
     -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Krunal Chaudhari",
-        "alternateName": "Krunal Chaudhari - Freelance Web Developer",
-        "url": "https://chaudharikrunal.me/",
-        "image": "https://chaudharikrunal.me/og-image.svg",
-        "description": "Freelance full stack web developer building modern, fast and responsive websites and web applications for businesses, startups and personal brands.",
-        "areaServed": "Worldwide",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-        },
-        "founder": {
-          "@type": "Person",
-          "name": "Krunal Chaudhari",
-          "jobTitle": "Freelance Full Stack Web Developer"
-        },
-        "knowsAbout": [
-          "Web development",
-          "React",
-          "Node.js",
-          "Business websites",
-          "Landing pages",
-          "E-commerce websites",
-          "Web applications"
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Web development services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Business Websites"
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://www.chaudharikrunal.me/#business",
+            "name": "Krunal Chaudhari",
+            "alternateName": "Krunal Chaudhari - Freelance Web Developer",
+            "url": "https://www.chaudharikrunal.me/",
+            "image": "https://www.chaudharikrunal.me/og-image.png",
+            "description": "Freelance full stack web developer in Surat, Gujarat, building modern, fast and responsive websites and web applications for businesses, startups and personal brands.",
+            "telephone": "+916351924667",
+            "priceRange": "From ₹4,999",
+            "currenciesAccepted": "INR",
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Surat"
+              },
+              {
+                "@type": "State",
+                "name": "Gujarat"
+              },
+              {
+                "@type": "Country",
+                "name": "India"
+              },
+              {
+                "@type": "Place",
+                "name": "Worldwide (remote)"
               }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Surat",
+              "addressRegion": "Gujarat",
+              "addressCountry": "IN"
             },
-            {
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": "Landing Pages" }
+            "founder": {
+              "@id": "https://www.chaudharikrunal.me/#krunal"
             },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "E-commerce Websites"
-              }
+            "sameAs": [
+              "https://www.linkedin.com/in/krunal-chaudhari-2b9ab5354/",
+              "https://www.instagram.com/krunalchaudhari.dev",
+              "https://www.facebook.com/krunalchaudhari.dev"
+            ],
+            "knowsAbout": [
+              "Web development",
+              "React",
+              "Next.js",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "MERN stack",
+              "Laravel",
+              "TypeScript",
+              "Tailwind CSS",
+              "Business websites",
+              "Landing pages",
+              "E-commerce websites",
+              "Web applications",
+              "Website redesign"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "telephone": "+916351924667",
+              "availableLanguage": [
+                "en",
+                "hi"
+              ]
             },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Custom Web Applications"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": "Website Redesign" }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Website Maintenance and Optimization"
-              }
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Web development services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Business Websites"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Landing Pages"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "E-commerce Websites"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Custom Web Applications"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Website Redesign"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Website Maintenance and Optimization"
+                  }
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.chaudharikrunal.me/#krunal",
+            "name": "Krunal Chaudhari",
+            "url": "https://www.chaudharikrunal.me/",
+            "image": "https://www.chaudharikrunal.me/krunal-chaudhari.webp",
+            "jobTitle": "Freelance Full Stack Web Developer",
+            "worksFor": {
+              "@id": "https://www.chaudharikrunal.me/#business"
+            },
+            "sameAs": [
+              "https://www.krunalchaudhari.dev/",
+              "https://www.linkedin.com/in/krunal-chaudhari-2b9ab5354/",
+              "https://www.instagram.com/krunalchaudhari.dev",
+              "https://www.facebook.com/krunalchaudhari.dev",
+              "https://medium.com/@chaudharikrunal0223"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.chaudharikrunal.me/#website",
+            "url": "https://www.chaudharikrunal.me/",
+            "name": "Krunal Chaudhari | Freelance Web Developer",
+            "inLanguage": "en-IN",
+            "publisher": {
+              "@id": "https://www.chaudharikrunal.me/#business"
+            }
+          }
+        ]
       }
     </script>
   </head>

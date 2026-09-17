@@ -8,6 +8,7 @@
 
 export const projectTypes = [
   'Business Website',
+  'Portfolio / Personal Brand',
   'Landing Page',
   'E-commerce',
   'Web Application',

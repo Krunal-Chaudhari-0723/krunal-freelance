@@ -21,8 +21,7 @@ export default function About() {
         {/* Copy */}
         <div>
           <Reveal>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-              <span className="h-px w-6 bg-accent/50" aria-hidden="true" />
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
               About
             </span>
 
@@ -35,14 +34,15 @@ export default function About() {
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
               <p>
-                I&apos;m a Full Stack Web Developer focused on building modern,
-                responsive and practical websites and web applications.
+                I&apos;m a freelance full stack web developer based in{' '}
+                {siteConfig.location}, focused on building modern, responsive
+                and practical websites and web applications.
               </p>
               <p>
-                I work with businesses, startups and individuals who want a
-                professional presence on the web without unnecessary complexity
-                — clear scope, clear communication, and a website that does its
-                job.
+                I work with businesses and startups in Surat and across
+                Gujarat, and remotely with clients anywhere else. What they all
+                want is the same: clear scope, clear communication, and a
+                website that does its job.
               </p>
             </div>
           </Reveal>
@@ -104,7 +104,7 @@ function Portrait() {
 
       <img
         src={siteConfig.photo}
-        alt={`${siteConfig.name}, ${siteConfig.title}`}
+        alt={`${siteConfig.name}, ${siteConfig.title.toLowerCase()} in ${siteConfig.location}`}
         width="880"
         height="1100"
         loading="lazy"

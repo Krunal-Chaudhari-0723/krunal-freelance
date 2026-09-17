@@ -178,7 +178,7 @@ export default function Contact({ prefill }) {
               <ContactRow
                 icon={MapPin}
                 label="Location"
-                value={`${siteConfig.location} — working with clients remotely`}
+                value={siteConfig.location}
               />
             </div>
 
@@ -539,7 +539,7 @@ function SuccessPanel({ onReset }) {
         <CircleCheck className="size-7" aria-hidden="true" />
       </span>
 
-      <h3 className="mt-6 text-xl font-bold">Thanks — your message is in.</h3>
+      <h3 className="mt-6 text-xl font-bold">Thanks your message is in.</h3>
 
       <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
         I&apos;ve received your enquiry and will get back to you with the next

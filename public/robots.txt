@@ -1,5 +1,11 @@
-# https://chaudharikrunal.me/
+# https://www.chaudharikrunal.me/
 User-agent: *
 Allow: /
 
-Sitemap: https://chaudharikrunal.me/sitemap.xml
+# No private, admin or API routes exist on this site - it is a single static
+# page. These rules are defensive, so anything added later is excluded by
+# default rather than by accident.
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://www.chaudharikrunal.me/sitemap.xml
